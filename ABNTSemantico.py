@@ -4,4 +4,6 @@ from typing import List
 
 
 class ABNTSemantico(ABNTVisitor):
-    pass
+    
+    def visitPrograma(self, ctx: ABNTParser.ProgramaContext):
+        return super().visitPrograma(ctx)

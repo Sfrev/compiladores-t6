@@ -28,7 +28,7 @@ CADEIA=27
 ID=28
 INT=29
 WS=30
-'!artigo'=1
+'artigo'=1
 '{'=2
 'nome'=3
 '='=4
@@ -42,7 +42,7 @@ WS=30
 'mes'=12
 'ano'=13
 '}'=14
-'!livro'=15
+'livro'=15
 'subtitulo'=16
 'edicao'=17
 'editora'=18
