@@ -1,0 +1,11 @@
+revista{
+    id=revista1,
+    nome="IEEE", ISBN=2312321310654
+}
+revista{
+    id=revista2,
+    nome="IEEE", ISBN=1982372184126
+}
+
+!artigo{nome=["Pedro de Souza"], titulo=["Artigo"],revista=[revista1], volume=[1], pagina=[23], mes=[08], ano=[2022]}
+!livro{nome=["Joao Ferreira"], titulo=["Livro1"], edicao=[1], local_publicacao=["Brasil"], editora=["Brasileira"], mes_publicacao=[1], ano_publicacao=[2022]}
