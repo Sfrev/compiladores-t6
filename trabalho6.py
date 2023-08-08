@@ -27,6 +27,8 @@ from antlr4 import *
 from ABNTLexer import ABNTLexer
 from ABNTParser import ABNTParser
 from ABNTSemantico import ABNTSemantico
+from ABNTSemanticoUtils import ABNTSemanticoUtils
+from GeradorMarkdown import GeradorMarkdown
 from antlr4.error.ErrorListener import ErrorListener
 
 
@@ -80,29 +82,21 @@ def main(argv):
         # Criando o analisador sintático
         parser = ABNTParser(stream)
 
-        # Removendo os listeners padrões
-        #lexer.removeErrorListeners()
-        #parser.removeErrorListeners()
-
-        # Adicionando os listeners personalizados
-        #lexer.addErrorListener(ABNTLexerErrorListener())
-        #parser.addErrorListener(ABNTParserErrorListener())
-
         # Executando o analisador semântico
         arvore = parser.programa()
-        #listener = ABNTSemantico()
-        #listener.visitPrograma(arvore)
+        listener = ABNTSemantico()
+        listener.visitPrograma(arvore)
 
         # Se existirem erros, eles são mostrados na saída
-        #for error in LASemanticoUtils.errosSemanticos:
-        #    saida.append(error)
+        for error in ABNTSemanticoUtils.errosSemanticos:
+            saida.append(error)
 
         # Se não houverem erros, o código C é gerado
-        #if len(LASemanticoUtils.errosSemanticos) == 0:
-        #    codigoC = GeradorCodigoC()
-        #    codigoC.visitPrograma(arvore)
-        #    for codigo in codigoC.codigo:
-        #        saida.append(codigo)
+        if len(ABNTSemanticoUtils.errosSemanticos) == 0:
+            textoMarkdown = GeradorMarkdown()
+            textoMarkdown.visitPrograma(arvore)
+            for markdown in textoMarkdown.markdown:
+                saida.append(markdown)
 
     except Exception as e:
         saida.append(traceback.format_exc())

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Repositorio\Compiladores\compiladores-t6\trabalho6.py", line 88, in main
+    listener.visitPrograma(arvore)
+  File "C:\Repositorio\Compiladores\compiladores-t6\ABNTSemantico.py", line 17, in visitPrograma
+    for citation in ctx.citation():
+TypeError: 'CitationContext' object is not iterable
+
