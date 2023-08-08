@@ -89,7 +89,7 @@ def main(argv):
         #parser.addErrorListener(ABNTParserErrorListener())
 
         # Executando o analisador semântico
-        arvore = parser.citation()
+        arvore = parser.programa()
         #listener = ABNTSemantico()
         #listener.visitPrograma(arvore)
 

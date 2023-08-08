@@ -9,6 +9,16 @@ else:
 
 class ABNTVisitor(ParseTreeVisitor):
 
+    # Visit a parse tree produced by ABNTParser#programa.
+    def visitPrograma(self, ctx:ABNTParser.ProgramaContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ABNTParser#variables.
+    def visitVariables(self, ctx:ABNTParser.VariablesContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ABNTParser#citation.
     def visitCitation(self, ctx:ABNTParser.CitationContext):
         return self.visitChildren(ctx)
@@ -24,6 +34,21 @@ class ABNTVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ABNTParser#periodico.
+    def visitPeriodico(self, ctx:ABNTParser.PeriodicoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ABNTParser#jornal.
+    def visitJornal(self, ctx:ABNTParser.JornalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ABNTParser#publisher.
+    def visitPublisher(self, ctx:ABNTParser.PublisherContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ABNTParser#names.
     def visitNames(self, ctx:ABNTParser.NamesContext):
         return self.visitChildren(ctx)
@@ -34,8 +59,8 @@ class ABNTVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ABNTParser#journalTitle.
-    def visitJournalTitle(self, ctx:ABNTParser.JournalTitleContext):
+    # Visit a parse tree produced by ABNTParser#localTitle.
+    def visitLocalTitle(self, ctx:ABNTParser.LocalTitleContext):
         return self.visitChildren(ctx)
 
 
@@ -66,16 +91,6 @@ class ABNTVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ABNTParser#edition.
     def visitEdition(self, ctx:ABNTParser.EditionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ABNTParser#location.
-    def visitLocation(self, ctx:ABNTParser.LocationContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ABNTParser#publisher.
-    def visitPublisher(self, ctx:ABNTParser.PublisherContext):
         return self.visitChildren(ctx)
 
 

@@ -8,6 +8,24 @@ else:
 # This class defines a complete listener for a parse tree produced by ABNTParser.
 class ABNTListener(ParseTreeListener):
 
+    # Enter a parse tree produced by ABNTParser#programa.
+    def enterPrograma(self, ctx:ABNTParser.ProgramaContext):
+        pass
+
+    # Exit a parse tree produced by ABNTParser#programa.
+    def exitPrograma(self, ctx:ABNTParser.ProgramaContext):
+        pass
+
+
+    # Enter a parse tree produced by ABNTParser#variables.
+    def enterVariables(self, ctx:ABNTParser.VariablesContext):
+        pass
+
+    # Exit a parse tree produced by ABNTParser#variables.
+    def exitVariables(self, ctx:ABNTParser.VariablesContext):
+        pass
+
+
     # Enter a parse tree produced by ABNTParser#citation.
     def enterCitation(self, ctx:ABNTParser.CitationContext):
         pass
@@ -35,6 +53,33 @@ class ABNTListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ABNTParser#periodico.
+    def enterPeriodico(self, ctx:ABNTParser.PeriodicoContext):
+        pass
+
+    # Exit a parse tree produced by ABNTParser#periodico.
+    def exitPeriodico(self, ctx:ABNTParser.PeriodicoContext):
+        pass
+
+
+    # Enter a parse tree produced by ABNTParser#jornal.
+    def enterJornal(self, ctx:ABNTParser.JornalContext):
+        pass
+
+    # Exit a parse tree produced by ABNTParser#jornal.
+    def exitJornal(self, ctx:ABNTParser.JornalContext):
+        pass
+
+
+    # Enter a parse tree produced by ABNTParser#publisher.
+    def enterPublisher(self, ctx:ABNTParser.PublisherContext):
+        pass
+
+    # Exit a parse tree produced by ABNTParser#publisher.
+    def exitPublisher(self, ctx:ABNTParser.PublisherContext):
+        pass
+
+
     # Enter a parse tree produced by ABNTParser#names.
     def enterNames(self, ctx:ABNTParser.NamesContext):
         pass
@@ -53,12 +98,12 @@ class ABNTListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ABNTParser#journalTitle.
-    def enterJournalTitle(self, ctx:ABNTParser.JournalTitleContext):
+    # Enter a parse tree produced by ABNTParser#localTitle.
+    def enterLocalTitle(self, ctx:ABNTParser.LocalTitleContext):
         pass
 
-    # Exit a parse tree produced by ABNTParser#journalTitle.
-    def exitJournalTitle(self, ctx:ABNTParser.JournalTitleContext):
+    # Exit a parse tree produced by ABNTParser#localTitle.
+    def exitLocalTitle(self, ctx:ABNTParser.LocalTitleContext):
         pass
 
 
@@ -113,24 +158,6 @@ class ABNTListener(ParseTreeListener):
 
     # Exit a parse tree produced by ABNTParser#edition.
     def exitEdition(self, ctx:ABNTParser.EditionContext):
-        pass
-
-
-    # Enter a parse tree produced by ABNTParser#location.
-    def enterLocation(self, ctx:ABNTParser.LocationContext):
-        pass
-
-    # Exit a parse tree produced by ABNTParser#location.
-    def exitLocation(self, ctx:ABNTParser.LocationContext):
-        pass
-
-
-    # Enter a parse tree produced by ABNTParser#publisher.
-    def enterPublisher(self, ctx:ABNTParser.PublisherContext):
-        pass
-
-    # Exit a parse tree produced by ABNTParser#publisher.
-    def exitPublisher(self, ctx:ABNTParser.PublisherContext):
         pass
 
 
