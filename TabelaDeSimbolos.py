@@ -8,17 +8,15 @@ class TabelaDeSimbolos:
         PERIODICO = 4
         JORNAL = 5
         PUBLICADORA = 6
-
+        INVALIDO = 7
 
     class EntradaTabelaDeSimbolos:
         def __init__(self, nome, tipo):
             self.nome = nome
             self.tipo = tipo
 
-    def __init__(self, tipo):
+    def __init__(self):
         self.tabelaDeSimbolos = {}
-        self.tabelaTipo = {}
-        self.tipo = tipo
 
     def adicionarTabelaSimbolos(self, nome: str, tipo: TipoABNT):
         etds = TabelaDeSimbolos.EntradaTabelaDeSimbolos(nome, tipo)
@@ -27,23 +25,14 @@ class TabelaDeSimbolos:
     def adicionarEntradaTabelaSimbolos(self, entradaTabelaSimbolos: EntradaTabelaDeSimbolos):
         self.tabelaDeSimbolos[entradaTabelaSimbolos.nome] = entradaTabelaSimbolos
 
-    def adicionarTipoNome(self, tipoNome: str, entradaTabelaSimbolos: EntradaTabelaDeSimbolos):
-
-        if tipoNome in self.tabelaTipo:
-            self.tabelaTipo.get(tipoNome).append(entradaTabelaSimbolos)
-        else:
-            list = []
-            list.append(entradaTabelaSimbolos)
-            self.tabelaTipo[tipoNome] = list
+    def obterEntradaTabelaSimbolos(self, nome: str):
+        return self.tabelaDeSimbolos[nome]
 
     def existe(self, nome: str):
         return nome in self.tabelaDeSimbolos
 
-    def verificar(self, nome: str):
+    def getTipo(self, nome: str):
         if self.existe(nome):
             return self.tabelaDeSimbolos[nome].tipo
         
         return None
-    
-    def verificarTipo(self, nome: str):
-        return self.tabelaTipo[nome]

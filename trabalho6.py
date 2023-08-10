@@ -34,7 +34,7 @@ from antlr4.error.ErrorListener import ErrorListener
 
 # Função para escrever a saída em um arquivo
 def saidaArquivo(nomeArquivo, saida):
-    arquivo = open(nomeArquivo, 'w')
+    arquivo = open(nomeArquivo, 'w', encoding='utf-8')
     for linha in saida:
         arquivo.write(f'{linha}\n')
 

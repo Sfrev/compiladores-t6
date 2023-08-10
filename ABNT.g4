@@ -1,8 +1,8 @@
 grammar ABNT;
 
-programa: variables+ citation EOF;
+programa: variables+ citation+ EOF;
 variables: periodico | jornal | publisher;
-citation: (articleCitation | bookCitation)*;
+citation: articleCitation | bookCitation;
 
 articleCitation: 'artigo' '{' 'nome' '=' names ',' 'titulo' '=' title ',' 'jornal' '=' '[' ID ']' ',' 'volume' '=' volume ',' 'pagina' '=' pages ',' 'mes' '=' month ',' 'ano' '=' year '}';
 bookCitation: 'livro' '{' 'nome' '=' names ',' 'titulo' '=' bookTitle (',' 'subtitulo' '=' '[' CADEIA ']')? ',' 'edicao' '=' edition ',' 'editora' '=' '[' ID ']' ',' 'mes_publicacao' '=' publishMonth ',' 'ano_publicacao' '=' publishYear '}';

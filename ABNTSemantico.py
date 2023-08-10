@@ -1,28 +1,46 @@
 from ABNTParser import ABNTParser
 from ABNTVisitor import ABNTVisitor
+from ABNTSemanticoUtils import ABNTSemanticoUtils
 from TabelaDeSimbolos import TabelaDeSimbolos
-from Escopo import Escopo
 from typing import List
 
 
 class ABNTSemantico(ABNTVisitor):
     def __init__(self):
-        self.escopos = Escopo()
+        self.tabelaDeSimbolos = TabelaDeSimbolos()
     
-    def visitPrograma(self, ctx):
+    def visitPrograma(self, ctx: ABNTParser.ProgramaContext):
+
+        declarouVariaveis = False
+        declarouCitacoes = False
 
         for variable in ctx.variables():
-            self.visit(variable)
+            declarouVariaveis = True
+            self.visitVariables(variable)
 
         for citation in ctx.citation():
-            self.visit(citation)
+            declarouCitacoes = True
+            self.visitCitation(citation)
 
-        # Implementar ações semânticas para o programa
-        return super().visitPrograma(ctx)
+        if not declarouVariaveis:
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, "Nenhuma variável declarada")
+        
+        if not declarouCitacoes:   
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, "Nenhuma citação declarada")
     
-    def visitVariables(self, ctx):
-        # Implementar ações semânticas para as variáveis (periodico, jornal, publisher)
-        return super().visitVariables(ctx)
+    def visitVariables(self, ctx: ABNTParser.VariablesContext):
+
+        periodico = ctx.periodico()
+        jornal = ctx.jornal()
+        publisher = ctx.publisher()
+
+        if periodico is not None:
+            self.visitPeriodico(periodico)
+        elif jornal is not None:
+            self.visitJornal(jornal)
+        elif publisher is not None:
+            self.visitPublisher(publisher)
+
         
     
     def visitCitation(self, ctx):
@@ -38,15 +56,36 @@ class ABNTSemantico(ABNTVisitor):
         return super().visitBookCitation(ctx)
     
     def visitPeriodico(self, ctx):
-        # Implementar ações semânticas para a definição de periódico
+        
+        if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
+            # Erro: variável já declarada
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo periódico já declarada")
+        
+        # Insere variável na tabela de símbolos
+        self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO)
+
         return super().visitPeriodico(ctx)
     
     def visitJornal(self, ctx):
-        # Implementar ações semânticas para a definição de jornal
+        
+        if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
+            # Erro: variável já declarada
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo jornal já declarada")
+        
+        # Insere variável na tabela de símbolos
+        self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL)
+        
         return super().visitJornal(ctx)
     
     def visitPublisher(self, ctx):
-        # Implementar ações semânticas para a definição de editora
+        
+        if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
+            # Erro: variável já declarada
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo publicadora já declarada")
+        
+        # Insere variável na tabela de símbolos
+        self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA)
+        
         return super().visitPublisher(ctx)
     
     def visitNames(self, ctx):
