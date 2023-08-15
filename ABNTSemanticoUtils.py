@@ -9,8 +9,8 @@ class ABNTSemanticoUtils:
     def adicionarErroSemantico(token, mensagem):
 
         linha = token.line
-        coluna = token.column
-        ABNTSemanticoUtils.errosSemanticos.append(f"Linha {linha}, coluna {coluna}: {mensagem}")
+        
+        ABNTSemanticoUtils.errosSemanticos.append(f"Linha {linha}: {mensagem}")
 
     @staticmethod
     def getTipo(valor: str) -> TabelaDeSimbolos.TipoABNT:

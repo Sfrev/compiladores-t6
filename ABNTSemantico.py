@@ -40,12 +40,16 @@ class ABNTSemantico(ABNTVisitor):
             self.visitJornal(jornal)
         elif publisher is not None:
             self.visitPublisher(publisher)
-
-        
     
     def visitCitation(self, ctx):
-        # Implementar ações semânticas para as citações (articleCitation, bookCitation)
-        return super().visitCitation(ctx)
+        
+        articleCitation = ctx.articleCitation()
+        bookCitation = ctx.bookCitation()
+
+        if articleCitation is not None:
+            self.visitArticleCitation(articleCitation)
+        elif bookCitation is not None:
+            self.visitBookCitation(bookCitation)
     
     def visitArticleCitation(self, ctx):
         # Implementar ações semânticas para a citação de artigo
@@ -63,8 +67,6 @@ class ABNTSemantico(ABNTVisitor):
         
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO)
-
-        return super().visitPeriodico(ctx)
     
     def visitJornal(self, ctx):
         
@@ -95,15 +97,3 @@ class ABNTSemantico(ABNTVisitor):
     def visitTitle(self, ctx):
         # Implementar ações semânticas para os títulos
         return super().visitTitle(ctx)
-    
-    #Este é apenas um 
-    # esqueleto básico para um analisador semântico. 
-    # Você precisará preencher cada método de visitação com ações semânticas específicas para cada regra da gramática, 
-    # como a verificação de tipos, controle de escopo, detecção de erros semânticos, entre outros.
-
-    #Certifique-se de adaptar o código às suas necessidades específicas e continuar a desenvolver 
-    # cada método de visitação de acordo com as verificações semânticas que você deseja realizar
-    #Em cada método de visitação, você deve implementar as verificações semânticas relevantes para 
-    # aquela regra específica. Por exemplo, no método visitPeriodico, você pode verificar se o ID do periódico é único, 
-    # se o ISBN é válido, etc. Da mesma forma, nos métodos visitArticleCitation e visitBookCitation, você pode verificar 
-    # se os campos estão sendo preenchidos corretamente e se as referências existem no contexto.
