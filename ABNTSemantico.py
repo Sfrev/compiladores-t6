@@ -67,6 +67,8 @@ class ABNTSemantico(ABNTVisitor):
         
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO)
+
+        #return super().visitPeriodico(ctx)
     
     def visitJornal(self, ctx):
         
@@ -77,7 +79,7 @@ class ABNTSemantico(ABNTVisitor):
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL)
         
-        return super().visitJornal(ctx)
+        #return super().visitJornal(ctx)
     
     def visitPublisher(self, ctx):
         
@@ -88,7 +90,7 @@ class ABNTSemantico(ABNTVisitor):
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA)
         
-        return super().visitPublisher(ctx)
+        #return super().visitPublisher(ctx)
     
     def visitNames(self, ctx):
         # Implementar ações semânticas para os nomes

@@ -97,6 +97,8 @@ def main(argv):
             textoMarkdown.visitPrograma(arvore)
             for markdown in textoMarkdown.markdown:
                 saida.append(markdown)
+        
+        ABNTSemanticoUtils.errosSemanticos = []
 
     except Exception as e:
         saida.append(traceback.format_exc())
