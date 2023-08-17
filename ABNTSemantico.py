@@ -52,11 +52,16 @@ class ABNTSemantico(ABNTVisitor):
             self.visitBookCitation(bookCitation)
     
     def visitArticleCitation(self, ctx):
-        # Implementar ações semânticas para a citação de artigo
+
+        if ctx.ID() is not None:
+            if not self.tabelaDeSimbolos.existe(ctx.ID().getText()):
+                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} não declarada")
         return super().visitArticleCitation(ctx)
     
     def visitBookCitation(self, ctx):
-        # Implementar ações semânticas para a citação de livro
+        if ctx.ID() is not None:
+            if not self.tabelaDeSimbolos.existe(ctx.ID().getText()):
+                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} não declarada")
         return super().visitBookCitation(ctx)
     
     def visitPeriodico(self, ctx):
@@ -68,7 +73,7 @@ class ABNTSemantico(ABNTVisitor):
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO)
 
-        #return super().visitPeriodico(ctx)
+        return super().visitPeriodico(ctx)
     
     def visitJornal(self, ctx):
         
@@ -79,7 +84,7 @@ class ABNTSemantico(ABNTVisitor):
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL)
         
-        #return super().visitJornal(ctx)
+        return super().visitJornal(ctx)
     
     def visitPublisher(self, ctx):
         
@@ -90,7 +95,7 @@ class ABNTSemantico(ABNTVisitor):
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA)
         
-        #return super().visitPublisher(ctx)
+        return super().visitPublisher(ctx)
     
     def visitNames(self, ctx):
         # Implementar ações semânticas para os nomes

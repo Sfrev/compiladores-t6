@@ -1,0 +1,22 @@
+periodico{ id=per1, nome="Revista A", ISBN=123456789 }
+jornal{ id=jor1, nome="Jornal B", local_publicacao="Cidade X", data_publicacao="01/01/2022" }
+editora { 
+    id=ed1, nome="Editora XYZ", idioma="Português" 
+}
+periodico{ id=per1, nome="Revista A", ISBN=123456789 }
+
+artigo{ nome=["Autor1", "Autor2"], titulo=["Título do Artigo"], jornal=[per1], volume=[1], pagina=[23], mes=[8], ano=[2022] }
+artigo{ nome=["Autor3"], titulo=["Outro Artigo"], jornal=[jor1], volume=[2], pagina=[45], mes=[9], ano=[2022] }
+
+livro{ nome=["Autor4"], titulo=["Título do Livro"], subtitulo=["Subtítulo do Livro"], edicao=[3], editora=[ed1], mes_publicacao=[12], ano_publicacao=[2022] }
+livro { 
+    nome=["Autor5", "Autor6"], titulo=["Outro Livro"], edicao=[2], editora=[ed1], mes_publicacao=[6], ano_publicacao=[2023]
+}
+
+artigo{ nome=["Autor1", "Autor2"], titulo=["Título do Artigo"], jornal=[per2], volume=[1], pagina=[23], mes=[8], ano=[2022] }
+artigo{ nome=["Autor3"], titulo=["Outro Artigo"], jornal=[jor2], volume=[2], pagina=[45], mes=[9], ano=[2022] }
+
+livro{ nome=["Autor4"], titulo=["Título do Livro"], subtitulo=["Subtítulo do Livro"], edicao=[3], editora=[ed3], mes_publicacao=[12], ano_publicacao=[2022] }
+livro { 
+    nome=["Autor5", "Autor6"], titulo=["Outro Livro"], edicao=[2], editora=[ed4], mes_publicacao=[6], ano_publicacao=[2023]
+}
