@@ -11,15 +11,16 @@ class TabelaDeSimbolos:
         INVALIDO = 7
 
     class EntradaTabelaDeSimbolos:
-        def __init__(self, nome, tipo):
+        def __init__(self, nome, tipo, valor = None):
             self.nome = nome
             self.tipo = tipo
+            self.valor = valor
 
     def __init__(self):
         self.tabelaDeSimbolos = {}
 
-    def adicionarTabelaSimbolos(self, nome: str, tipo: TipoABNT):
-        etds = TabelaDeSimbolos.EntradaTabelaDeSimbolos(nome, tipo)
+    def adicionarTabelaSimbolos(self, nome: str, tipo: TipoABNT, valor = None):
+        etds = TabelaDeSimbolos.EntradaTabelaDeSimbolos(nome, tipo, valor)
         self.tabelaDeSimbolos[nome] = etds
 
     def adicionarEntradaTabelaSimbolos(self, entradaTabelaSimbolos: EntradaTabelaDeSimbolos):

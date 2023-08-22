@@ -18,7 +18,7 @@ def main():
     listPath = []
 
     for i in range(len(listaEntradas)):
-        listPath.append([0, pathEntradas + '\\' + listaEntradas[i], pathSaidas + '\\' + 'saida' + str(i) + '.txt'])
+        listPath.append([0, pathEntradas + '\\' + listaEntradas[i], pathSaidas + '\\' + 'saida' + str(i) + '.md'])
 
     for i in range(len(listaEntradas)):
         t6.main(listPath[i])
@@ -37,11 +37,10 @@ def main():
             testesCorretos += 1
             
         except:
-            os.rename(pathSaidas + '\\' + listaSaidas[i], pathSaidas + '\\' + 'saida' + str(i) + 'ERRO.txt')
+            os.rename(pathSaidas + '\\' + listaSaidas[i], pathSaidas + '\\' + 'saida' + str(i) + 'ERRO.md')
             print('Teste ' + str(i) + ' falhou')
     
     print('\n' + str(testesCorretos) + '/' + str(casosDeTeste) + ' testes passaram\n')
-
 
 if __name__ == "__main__":
     main()

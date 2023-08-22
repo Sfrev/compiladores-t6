@@ -96,11 +96,3 @@ class ABNTSemantico(ABNTVisitor):
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA)
         
         return super().visitPublisher(ctx)
-    
-    def visitNames(self, ctx):
-        # Implementar ações semânticas para os nomes
-        return super().visitNames(ctx)
-    
-    def visitTitle(self, ctx):
-        # Implementar ações semânticas para os títulos
-        return super().visitTitle(ctx)
