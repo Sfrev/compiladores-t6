@@ -1,11 +1,11 @@
-## "Autor1","Autor2"
+## "Autor1 de Oliveira","Autor2 Souza"
 ## "Título do Artigo"
 ## "Revista A"
 ## 1
 ## 23
 ## 8
 ## 2022
-## "Autor3"
+## "Autor3 Carvalho"
 ## "Outro Artigo"
 ## "Jornal B"
 ## 2
@@ -20,6 +20,7 @@
 ## "Português"
 ## 12
 ## 2022
+
 ### "Autor5","Autor6"
 ### "Outro Livro"
 ### 2
@@ -27,3 +28,4 @@
 ## "Português"
 ## 6
 ## 2023
+

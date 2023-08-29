@@ -71,24 +71,27 @@ class GeradorMarkdown(ABNTVisitor):
                 self.markdown.append(f"## {variavel[1]}")
                 self.markdown.append(f"## {ctx.publishMonth().getText()}")
                 self.markdown.append(f"## {ctx.publishYear().getText()}")
+                self.markdown.append(f"")
         return super().visitBookCitation(ctx)
     
     def visitPeriodico(self, ctx: ABNTParser.PeriodicoContext):
         periodico = []
         periodico.append(ctx.CADEIA().getText())
         periodico.append(ctx.INT().getText())
+        periodico.append(ctx.localTitle().getText())
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO, periodico)
 
     def visitJornal(self, ctx: ABNTParser.JornalContext):
         jornal = []
         jornal.append(ctx.CADEIA()[0].getText())
         jornal.append(ctx.CADEIA()[1].getText())
-        jornal.append(ctx.CADEIA()[2].getText())
+        jornal.append(ctx.localTitle().getText())
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL, jornal)
 
     def visitPublisher(self, ctx: ABNTParser.PublisherContext):
         publicadora = []
         publicadora.append(ctx.CADEIA()[0].getText())
         publicadora.append(ctx.CADEIA()[1].getText())
+        publicadora.append(ctx.localTitle().getText())
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA, publicadora)
     

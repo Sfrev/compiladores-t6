@@ -1,9 +1,9 @@
-periodico{ id=per1, nome="Revista A", ISBN=123456789 }
+periodico{ id=per1, nome="Revista A", ISBN=123456789, local_publicacao="Cidade X" }
 jornal{ id=jor1, nome="Jornal B", local_publicacao="Cidade X", data_publicacao="01/01/2022" }
 editora { 
-    id=ed1, nome="Editora XYZ", idioma="Português" 
+    id=ed1, nome="Editora XYZ", idioma="Português", local_publicacao="Cidade X" 
 }
-periodico{ id=per1, nome="Revista A", ISBN=123456789 }
+periodico{ id=per1, nome="Revista A", ISBN=123456789, local_publicacao="Cidade X" }
 
 artigo{ nome=["Autor1", "Autor2"], titulo=["Título do Artigo"], jornal=[per1], volume=[1], pagina=[23], mes=[8], ano=[2022] }
 artigo{ nome=["Autor3"], titulo=["Outro Artigo"], jornal=[jor1], volume=[2], pagina=[45], mes=[9], ano=[2022] }

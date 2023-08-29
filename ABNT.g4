@@ -7,9 +7,9 @@ citation: articleCitation | bookCitation;
 articleCitation: 'artigo' '{' 'nome' '=' '[' names ']' ',' 'titulo' '=' '[' title ']' ',' 'jornal' '=' '[' ID ']' ',' 'volume' '=' '[' volume ']' ',' 'pagina' '=' '[' pages ']' ',' 'mes' '=' '[' month ']' ',' 'ano' '=' '[' year ']' '}';
 bookCitation: 'livro' '{' 'nome' '=' '[' names ']' ',' 'titulo' '=' '[' bookTitle ']' (',' 'subtitulo' '=' '[' CADEIA ']')? ',' 'edicao' '=' '[' edition ']' ',' 'editora' '=' '[' ID ']' ',' 'mes_publicacao' '=' '[' publishMonth ']' ',' 'ano_publicacao' '=' '[' publishYear ']' '}';
 
-periodico: 'periodico' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'ISBN' '=' INT '}' ;
-jornal: 'jornal' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'local_publicacao' '=' CADEIA ',' 'data_publicacao' '=' CADEIA '}';
-publisher: 'editora' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'idioma' '=' CADEIA '}';
+periodico: 'periodico' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'ISBN' '=' INT ',' 'local_publicacao' '=' localTitle '}' ;
+jornal: 'jornal' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'local_publicacao' '=' localTitle ',' 'data_publicacao' '=' CADEIA '}';
+publisher: 'editora' '{' 'id' '=' ID ',' 'nome' '=' CADEIA ',' 'idioma' '=' CADEIA ',' 'local_publicacao' '=' localTitle '}';
 names: name (',' name)*;
 title: name;
 localTitle: name;
