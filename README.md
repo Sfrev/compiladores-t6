@@ -31,8 +31,9 @@ java -jar antlr-4.9.2-complete.jar -visitor -Dlanguage=Python3 ABNT.g4
 #### Execução do Código do Trabalho
 Utilize o seguinte comando no terminal:
 ```
-python trabalho6.py <arquivo_entrada> <arquivo_saida>
+python trabalho6.py <arquivo_entrada>.txt <arquivo_saida>.md
 ```
+Certifique-se que o formato do arquivo de saída é .md
 #### Uso do Corretor
 Para utilizar o corretor, siga as seguintes etapas:
 1. Execute o seguinte comando no terminal para iniciar o corretor:
