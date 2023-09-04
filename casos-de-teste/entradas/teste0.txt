@@ -4,10 +4,10 @@ editora {
     id=ed1, nome="Editora XYZ", idioma="Português", local_publicacao="Cidade X" 
 }
 
-artigo{ nome=["Autor1 de Oliveira", "Autor2 Souza"], titulo=["Título do Artigo"], jornal=[per1], volume=[1], pagina=[23], mes=[8], ano=[2022] }
+artigo{ nome=["Autor1 Oliveira", "Autor2 Souza"], titulo=["Título do Artigo"], jornal=[per1], volume=[1], pagina=[23], mes=[8], ano=[2022] }
 artigo{ nome=["Autor3 Carvalho"], titulo=["Outro Artigo"], jornal=[jor1], volume=[2], pagina=[45], mes=[9], ano=[2022] }
 
-livro{ nome=["Autor4 de Oliveira"], titulo=["Título do Livro"], subtitulo=["Subtítulo do Livro"], edicao=[3], editora=[ed1], mes_publicacao=[12], ano_publicacao=[2022] }
+livro{ nome=["Autor4 Oliveira"], titulo=["Título do Livro"], subtitulo=["Subtítulo do Livro"], edicao=[3], editora=[ed1], mes_publicacao=[12], ano_publicacao=[2022] }
 livro { 
-    nome=["Autor5 de Oliveira", "Autor6 de Oliveira"], titulo=["Outro Livro"], edicao=[2], editora=[ed1], mes_publicacao=[6], ano_publicacao=[2023]
+    nome=["Autor5 Oliveira", "Autor6 Sousa"], titulo=["Outro Livro"], edicao=[2], editora=[ed1], mes_publicacao=[6], ano_publicacao=[2023]
 }

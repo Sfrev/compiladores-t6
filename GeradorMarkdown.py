@@ -37,82 +37,114 @@ class GeradorMarkdown(ABNTVisitor):
 
     def visitArticleCitation(self, ctx):
         if ctx.ID() is not None:
-            artigo = self.tabela.obterEntradaTabelaSimbolos(ctx.ID().getText()).valor
+            self.markdown.append(f"# Artigo")
+            self.markdown.append(f"```")
+            publicacao = self.tabela.obterEntradaTabelaSimbolos(ctx.ID().getText()).valor
 
-            self.markdown.append(f"## {ctx.names().getText()}")
-            self.markdown.append(f"## {ctx.title().getText()}")
-            self.markdown.append(f"## {artigo[0]}")
-            self.markdown.append(f"## {ctx.volume().getText()}")
-            self.markdown.append(f"## {ctx.pages().getText()}")
-            self.markdown.append(f"## {ctx.month().getText()}")
-            self.markdown.append(f"## {ctx.year().getText()}")
+            names = ctx.names().getText()
+            names = removerAspasDuplas(names)
+            nomes = ordenarNomes(names)
+
+            tituloArtigo = ctx.title().getText()
+            tituloArtigo = removerAspasDuplas(tituloArtigo)
+
+
+            self.markdown.append(f"{nomes} {tituloArtigo}. {publicacao[0]}, {publicacao[1]}, v.{ctx.volume().getText()}, p.{ctx.pages().getText()}, {abreviar_mes(ctx.month().getText())} {ctx.year().getText()}. ")
+
+            self.markdown.append(f"```")
 
         return super().visitArticleCitation(ctx)
     
     def visitBookCitation(self, ctx):
         if ctx.ID() is not None:
-            livro = self.tabela.obterEntradaTabelaSimbolos(ctx.ID().getText()).valor
+            self.markdown.append(f"# Livro")
+            self.markdown.append(f"```")
+            publicadora = self.tabela.obterEntradaTabelaSimbolos(ctx.ID().getText()).valor
 
-            nomes = ordenar_nomes(ctx.names().getText())
-            ##separacao = ctx.names().getText().split()
-            ##sobrenome_autor = separacao[-1].upper()
-            ##separacao.pop()
-            ##nome_autor = ' '.join(separacao)
+            names = ctx.names().getText()
+            names = removerAspasDuplas(names)
+            nomes = ordenarNomes(names)
 
-            self.markdown.append(f"## {nomes}")
+            tituloLivro = ctx.bookTitle().getText()
+            tituloLivro = removerAspasDuplas(tituloLivro)
 
-            print('alooooooooooooo')
-
-            self.markdown.append(f"### {ctx.bookTitle().getText()}")
+            subTitulo = ''
 
             if ctx.CADEIA() is not None:
-                self.markdown.append(f"### {ctx.CADEIA().getText()}")
+                subTitulo = ctx.CADEIA().getText()
+                subTitulo = removerAspasDuplas(subTitulo)
 
-            self.markdown.append(f"### {ctx.edition().getText()}")
-            self.markdown.append(f"## {livro[0]}")
-            self.markdown.append(f"## {livro[1]}")
-            self.markdown.append(f"## {ctx.publishMonth().getText()}")
-            self.markdown.append(f"## {ctx.publishYear().getText()}")
-            self.markdown.append(f"")
+            self.markdown.append(f"{nomes} {tituloLivro}. {subTitulo if ctx.CADEIA() is not None else ''} {ctx.edition().getText()}. ed. {publicadora[2]}, {publicadora[0]}, {abreviar_mes(ctx.publishMonth().getText())} {ctx.publishYear().getText()}.")
+            self.markdown.append(f"```")
         return super().visitBookCitation(ctx)
     
     def visitPeriodico(self, ctx: ABNTParser.PeriodicoContext):
         periodico = []
-        periodico.append(ctx.CADEIA().getText())
+        nome = ctx.CADEIA().getText()
+        nome = removerAspasDuplas(nome)
+        localTitle = ctx.localTitle().getText()
+        localTitle = removerAspasDuplas(localTitle)
+
+        periodico.append(nome)
         periodico.append(ctx.INT().getText())
-        periodico.append(ctx.localTitle().getText())
+        periodico.append(localTitle)
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO, periodico)
 
     def visitJornal(self, ctx: ABNTParser.JornalContext):
         jornal = []
-        jornal.append(ctx.CADEIA()[0].getText())
-        jornal.append(ctx.CADEIA()[1].getText())
-        jornal.append(ctx.localTitle().getText())
+        nome = ctx.CADEIA()[0].getText()
+        nome = removerAspasDuplas(nome)
+        localPublicacao = ctx.localTitle().getText()
+        localPublicacao = removerAspasDuplas(localPublicacao)
+        dataPublicacao = ctx.CADEIA()[1].getText()
+
+        jornal.append(nome)
+        jornal.append(localPublicacao)
+        jornal.append(dataPublicacao)
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL, jornal)
 
     def visitPublisher(self, ctx: ABNTParser.PublisherContext):
         publicadora = []
-        publicadora.append(ctx.CADEIA()[0].getText())
-        publicadora.append(ctx.CADEIA()[1].getText())
-        publicadora.append(ctx.localTitle().getText())
+        nome = ctx.CADEIA()[0].getText()
+        nome = removerAspasDuplas(nome)
+        idioma = ctx.CADEIA()[1].getText()
+        idioma = removerAspasDuplas(idioma)
+        localTitle = ctx.localTitle().getText()
+        localTitle = removerAspasDuplas(localTitle)
+
+        publicadora.append(nome)
+        publicadora.append(idioma)
+        publicadora.append(localTitle)
         self.tabela.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA, publicadora)
     
-def ordenar_nomes(entrada):
-    # Divida a entrada em uma lista de nomes
-    nomes = entrada.split(', ')
+def ordenarNomes(entrada):
+    nomes = entrada.split(',')
+    nomes_formatados = []
 
-    # Ordene a lista de nomes pelo primeiro nome
-    nomes_ordenados = sorted(nomes, key=lambda nome: nome.split()[0])
+    for nome in nomes:
+        partes = nome.split()
+        sobrenome = partes[1].upper()
+        nome_formatado = f'{sobrenome}, {partes[0]}'
+        nomes_formatados.append(nome_formatado)
 
-    # Crie a saída formatada
-    saida = ''
-    for nome in nomes_ordenados:
-        partes_nome = nome.split()
-        sobrenome = partes_nome[-1]
-        primeiro_nome = ' '.join(partes_nome[:-1])
-        saida += f'{sobrenome.upper()}, {primeiro_nome}. '
+    return '; '.join(nomes_formatados) + '.'
 
-    # Remova o espaço em branco extra no final
-    saida = saida.rstrip()
+def removerAspasDuplas(entrada):
+    return entrada.replace('"', '')
 
-    return saida
+def abreviar_mes(mes):
+    meses = {
+        '1': 'jan.',
+        '2': 'fev.',
+        '3': 'mar.',
+        '4': 'abr.',
+        '5': 'mai.',
+        '6': 'jun.',
+        '7': 'jul.',
+        '8': 'ago.',
+        '9': 'set.',
+        '10': 'out.',
+        '11': 'nov.',
+        '12': 'dez.'
+    }
+    return meses[mes]

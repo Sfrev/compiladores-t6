@@ -87,7 +87,6 @@ def main(argv):
 
         # Se existirem erros, eles são mostrados na saída
         for error in ABNTSemanticoUtils.errosSemanticos:
-            print(error)
             saida.append(error)
 
         # Se não houverem erros, o código C é gerado
