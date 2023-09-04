@@ -43,4 +43,4 @@ python testador.py
 1. Certifique-se de possuir a pasta "casos-de-teste" no mesmo diretório do arquivo "testador.py" e as pastas "entradas", "saidas" e "saidas-esperadas" dentro da pasta de "casos-de-teste".
 
 #### Link do vídeo de apresentação do grupo 
-(inserir)
+https://youtu.be/wOjvf0B24lk
