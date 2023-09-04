@@ -10,7 +10,11 @@
 
 ### Introdução
 
-Este relatório apresenta o trabalho desenvolvido pela equipe composta pelos integrantes acima mencionados, como atividade avaliativa da disciplina de Construção de Compiladores. O objetivo do trabalho foi a implementação de um gerador markdown de referências no padrão ABNT a partir de uma linguagem criada pelos integrantes. O trabalho foi desenvolvido utilizando a linguagem Python e a ferramenta ANTLR4.
+Esse trabalho trata-se do projeto final da disciplina de Compiladores, como parte da avaliação de desempenho da mesma. Os autores tem como objetivo a implementação de um compilador que irá executar um gerador markdown de referências de livros e artigos de acordo com o padrão estabelecido Associação Brasileira de Normas Técnicas (ABNT) para textos técnicos e científicos, a partir da linguagem criada. 
+
+Para o desenvolvimento do trabalho, utilizou-se da linguagem Python e da ferramenta ANTLR4, já implementado em projetos anteriores.
+
+O compilador será capaz de receber um arquivo de entrada no formato especificado, indicar se há alguma informação preenchida erroneamente ou faltante e em caso de adequação às regras estabelecidas gerar o markdown com citação já padronizada pela ABNT
 
 ### Modo de Execução e Compilação
 
