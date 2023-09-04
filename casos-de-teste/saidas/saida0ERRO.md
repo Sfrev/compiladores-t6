@@ -12,7 +12,7 @@
 ## 45
 ## 9
 ## 2022
-### "Autor4"
+## OLIVEIRA", "Autor4 de.
 ### "Título do Livro"
 ### "Subtítulo do Livro"
 ### 3
@@ -21,7 +21,7 @@
 ## 12
 ## 2022
 
-### "Autor5","Autor6"
+## OLIVEIRA", "Autor5 de Oliveira","Autor6 de.
 ### "Outro Livro"
 ### 2
 ## "Editora XYZ"

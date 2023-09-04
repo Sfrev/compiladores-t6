@@ -2,6 +2,8 @@ import os
 import filecmp
 import trabalho6 as t6
 
+# Para utilizar use o comando: python testador.py
+
 def main():
 
     pathEntradas = "casos-de-teste\entradas"

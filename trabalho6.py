@@ -1,6 +1,6 @@
 # UFSCar - Departamento de Computação
 # Construção de compiladores
-# Gerador de Código C para a linguagem LA
+# Gerador Markdown de referências no padrão ABNT
 
 # Autor: Igor Teixeira Machado RA: 769708
 # Autor: Júlia Aparecida de Sousa RA: 769707
@@ -10,15 +10,13 @@
 # pip install antlr4-python3-runtime
 
 # Para executar o ANTLR4 no Windows, basta executar o comando abaixo no terminal
-# java -jar antlr-4.9.2-complete.jar -visitor -Dlanguage=Python3 LA.g4
+# java -jar antlr-4.9.2-complete.jar -visitor -Dlanguage=Python3 ABNT.g4
 
 # Para executar o programa, basta executar o comando abaixo no terminal
-# python trabalho5.py <arquivo_entrada> <arquivo_saida>
+# python trabalho6.py <arquivo_entrada> <arquivo_saida>
 
 # Para executar o corretor, basta executar o comando abaixo no terminal
-# java -jar <caminho_do_corretor> "<python <caminho_programa>>" gcc <pasta_saidas> <pasta_casos_de_teste> "<RAs dos integrantes>" "t5"
-# Exemplo:
-# java -jar .\compiladores-corretor-automatico-1.0-SNAPSHOT-jar-with-dependencies.jar "python C:\Repositorio\Compiladores\compiladores-t5\trabalho5.py" gcc C:\Repositorio\Compiladores\compiladores-t5\saidas C:\Repositorio\Compiladores\casos-de-teste "RA" "t5"
+# python testador.py
 
 # Importação de bibliotecas
 import sys
@@ -89,10 +87,12 @@ def main(argv):
 
         # Se existirem erros, eles são mostrados na saída
         for error in ABNTSemanticoUtils.errosSemanticos:
+            print(error)
             saida.append(error)
 
         # Se não houverem erros, o código C é gerado
         if len(ABNTSemanticoUtils.errosSemanticos) == 0:
+            print("Nenhum erro semântico encontrado. Gerando código...")
             textoMarkdown = GeradorMarkdown()
             textoMarkdown.visitPrograma(arvore)
             for markdown in textoMarkdown.markdown:

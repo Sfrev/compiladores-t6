@@ -1,1 +1,1 @@
-Linha 6: Variável per1 do tipo periódico já declarada
+Linha 6: Periódico per1 já declarado

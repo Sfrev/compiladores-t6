@@ -2,8 +2,6 @@ from ABNTParser import ABNTParser
 from ABNTVisitor import ABNTVisitor
 from ABNTSemanticoUtils import ABNTSemanticoUtils
 from TabelaDeSimbolos import TabelaDeSimbolos
-from typing import List
-
 
 class ABNTSemantico(ABNTVisitor):
     def __init__(self):
@@ -55,20 +53,20 @@ class ABNTSemantico(ABNTVisitor):
 
         if ctx.ID() is not None:
             if not self.tabelaDeSimbolos.existe(ctx.ID().getText()):
-                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} não declarada")
+                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Artigo {ctx.ID().getText()} não declarado")
         return super().visitArticleCitation(ctx)
     
     def visitBookCitation(self, ctx):
         if ctx.ID() is not None:
             if not self.tabelaDeSimbolos.existe(ctx.ID().getText()):
-                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} não declarada")
+                ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Livro {ctx.ID().getText()} não declarado")
         return super().visitBookCitation(ctx)
     
     def visitPeriodico(self, ctx):
         
         if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
             # Erro: variável já declarada
-            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo periódico já declarada")
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Periódico {ctx.ID().getText()} já declarado")
         
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PERIODICO)
@@ -79,7 +77,7 @@ class ABNTSemantico(ABNTVisitor):
         
         if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
             # Erro: variável já declarada
-            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo jornal já declarada")
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Jornal {ctx.ID().getText()} já declarado")
         
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.JORNAL)
@@ -90,7 +88,7 @@ class ABNTSemantico(ABNTVisitor):
         
         if self.tabelaDeSimbolos.existe(ctx.ID().getText()):
             # Erro: variável já declarada
-            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Variável {ctx.ID().getText()} do tipo publicadora já declarada")
+            ABNTSemanticoUtils.adicionarErroSemantico(ctx.start, f"Publicadora {ctx.ID().getText()} já declarada")
         
         # Insere variável na tabela de símbolos
         self.tabelaDeSimbolos.adicionarTabelaSimbolos(ctx.ID().getText(), TabelaDeSimbolos.TipoABNT.PUBLICADORA)
