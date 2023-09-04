@@ -14,7 +14,7 @@ Esse trabalho trata-se do projeto final da disciplina de Compiladores, como part
 
 Para o desenvolvimento do trabalho, utilizou-se da linguagem Python e da ferramenta ANTLR4, já implementado em projetos anteriores.
 
-O compilador será capaz de receber um arquivo de entrada no formato especificado, indicar se há alguma informação preenchida erroneamente ou faltante e em caso de adequação às regras estabelecidas gerar o markdown com citação já padronizada pela ABNT
+O compilador será capaz de receber um arquivo de entrada no formato especificado, indicar se há alguma informação preenchida erroneamente ou faltante. No caso de adequação às regras estabelecidas tem-se a geração do markdown com citação já padronizada pela ABNT. 
 
 ### Modo de Execução e Compilação
 
