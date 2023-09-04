@@ -1,6 +1,6 @@
 # Trabalho 06 - Construção de Compiladores
 
-## Documentação Externa
+## Documentação Externa - Gerador de Referências ABNT
 
 ### Integrantes do Grupo:
 
